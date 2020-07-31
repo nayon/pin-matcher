@@ -12,33 +12,33 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input id="generate-num" class="form-control" type="text" placeholder="Click On Generate Pin">
+                    <input id="generate-num" class="form-control text-center" type="text" placeholder="Click On Generate Pin">
                     <button onclick="generateRandom()" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input class="form-control" type="text">
+                    <input id="number-input" class="form-control text-center" type="text" placeholder="Type Your Generate Pin Here">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
-                              <div class="button">7</div>
-                              <div class="button">8</div>
-                              <div class="button">9</div>
+                              <div onclick="showValue(7)" class="button">7</div>
+                              <div onclick="showValue(8)" class="button">8</div>
+                              <div onclick="showValue(9)" class="button">9</div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">4</div>
-                              <div class="button">5</div>
-                              <div class="button">6</div>
+                              <div onclick="showValue(4)" class="button">4</div>
+                              <div onclick="showValue(5)" class="button">5</div>
+                              <div onclick="showValue(6)" class="button">6</div>
                             </div>
                             <div class="calc-button-row">
-                              <div class="button">1</div>
-                              <div class="button">2</div>
-                              <div class="button">3</div>
+                              <div onclick="showValue(1)" class="button">1</div>
+                              <div onclick="showValue(2)" class="button">2</div>
+                              <div onclick="showValue(3)" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
                                 <div class="button"><</div>
-                                <div class="button">0</div>
+                                <div onclick="showValue(0)" class="button">0</div>
                                 <div class="button">C</div>
                             </div>
                             <div>
@@ -64,6 +64,10 @@
             document.getElementById('generate-num').value = Math.round(Math.random() * 8999 + 1000);
         }
         document.getElementById('generate-num').value = "";
+        // Active number Button
+        function showValue(num) {
+            document.getElementById('number-input').value = document.getElementById('number-input').value + num;
+        }
     </script>
 </body>
 </html>
