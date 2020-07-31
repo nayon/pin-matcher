@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input class="form-control" type="text">
-                    <button class="generate-btn">Generate Pin</button>
+                    <input id="generate-num" class="form-control" type="text" placeholder="Click On Generate Pin">
+                    <button onclick="generateRandom()" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -50,9 +50,20 @@
             </div>
         </div>
         <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="matchNotification1" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="matchNotification2" class="notify">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
+
+    <script>
+        // Making the notification invisible
+        document.getElementById("matchNotification1").style.display = "none";
+        document.getElementById("matchNotification2").style.display = "none";
+        // generate random number
+        function generateRandom() {
+            document.getElementById('generate-num').value = Math.round(Math.random() * 8999 + 1000);
+        }
+        document.getElementById('generate-num').value = "";
+    </script>
 </body>
 </html>
