@@ -37,13 +37,13 @@
                               <div onclick="showValue(3)" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button"><</div>
+                                <div onclick="deleteBtn()" class="button"><</div>
                                 <div onclick="showValue(0)" class="button">0</div>
-                                <div class="button">C</div>
+                                <div onclick="clearAll()" class="button">C</div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <button id="submit-area" onclick="submitButton()" type="submit" class="submit-btn">Submit</button>
+                                <p id="action-notify" class="action-left">3 try left</p>
                             </div>
                     </div>
                 </div>
@@ -56,17 +56,45 @@
     </div>
 
     <script>
-        // Making the notification invisible
+        // Active Notification Invisible
         document.getElementById("matchNotification1").style.display = "none";
         document.getElementById("matchNotification2").style.display = "none";
+        document.getElementById("action-notify").style.display = "none";
         // generate random number
         function generateRandom() {
             document.getElementById('generate-num').value = Math.round(Math.random() * 8999 + 1000);
         }
         document.getElementById('generate-num').value = "";
-        // Active number Button
+        // Active Number Button
         function showValue(num) {
             document.getElementById('number-input').value = document.getElementById('number-input').value + num;
+        }
+        document.getElementById('number-input').value = "";
+        // Active Submit Button
+        function submitButton() {
+            let inputNumber = document.getElementById('number-input').value;
+            let generateNumber = document.getElementById('generate-num').value;
+            if (inputNumber == "" && generateNumber == "") {
+                alert('Please Generate Pin');
+            }
+            else if (generateNumber == inputNumber) {
+                document.getElementById("matchNotification1").style.display = "none";
+                document.getElementById("matchNotification2").style.display = "block";
+            }
+            else{
+                document.getElementById("matchNotification1").style.display = "block";
+                document.getElementById("matchNotification2").style.display = "none";
+                tryLeft();
+            }
+
+        }
+        // Active Clear Button
+        function clearAll() {
+            document.getElementById('number-input').value = "";
+        }
+        function deleteBtn() {
+            let inputValue = document.getElementById('number-input').value;
+            document.getElementById('number-input').value = inputValue.substring(0, inputValue.length - 1);
         }
     </script>
 </body>
