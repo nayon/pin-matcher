@@ -37,7 +37,7 @@
                               <div onclick="showValue(3)" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div onclick="deleteBtn()" class="button"><</div>
+                                <div onclick="backSpace()" class="button"><</div>
                                 <div onclick="showValue(0)" class="button">0</div>
                                 <div onclick="clearAll()" class="button">C</div>
                             </div>
@@ -59,13 +59,12 @@
         // Active Notification Invisible
         document.getElementById("matchNotification1").style.display = "none";
         document.getElementById("matchNotification2").style.display = "none";
-        document.getElementById("action-notify").style.display = "none";
         // generate random number
         function generateRandom() {
             document.getElementById('generate-num').value = Math.round(Math.random() * 8999 + 1000);
         }
         document.getElementById('generate-num').value = "";
-        // Active Number Button
+        // Active Number Buttons
         function showValue(num) {
             document.getElementById('number-input').value = document.getElementById('number-input').value + num;
         }
@@ -86,16 +85,17 @@
                 document.getElementById("matchNotification2").style.display = "none";
                 tryLeft();
             }
-
         }
         // Active Clear Button
         function clearAll() {
             document.getElementById('number-input').value = "";
         }
-        function deleteBtn() {
+        // Active Backspace Button 
+        function backSpace() {
             let inputValue = document.getElementById('number-input').value;
             document.getElementById('number-input').value = inputValue.substring(0, inputValue.length - 1);
         }
+       
     </script>
 </body>
 </html>
