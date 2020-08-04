@@ -83,6 +83,8 @@
             else{
                 document.getElementById("matchNotification1").style.display = "block";
                 document.getElementById("matchNotification2").style.display = "none";
+                tryLeft();
+            }
         }
         // Active Clear Button
         function clearAll() {
@@ -92,6 +94,24 @@
         function backSpace() {
             let inputValue = document.getElementById('number-input').value;
             document.getElementById('number-input').value = inputValue.substring(0, inputValue.length - 1);
+        }
+        // Active Left Notification
+        let count = 0;
+        function tryLeft() {
+            let numberInput = document.getElementById('number-input').value;
+            let generateInput = document.getElementById('generate-num').value;
+            count++
+            console.log(count);
+            if (count == 1 && numberInput !== generateInput) {
+                document.getElementById("action-notify").innerText = "2 try left";
+            }
+            else if (count == 2 && numberInput !== generateInput) {
+                document.getElementById("action-notify").innerText = "1 try left";                
+            }
+            else if (count == 3 && numberInput !== generateInput) {
+                document.getElementById("action-notify").innerText = "0 try left";
+                document.getElementById("sunmit-area").disabled = true;
+            }
         }
     </script>
 </body>
